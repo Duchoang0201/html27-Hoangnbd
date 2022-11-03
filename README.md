@@ -81,11 +81,11 @@ MAC:
 + Config username : git config --global user.name '<name>'
 + Add toàn bộ file change: git add .
 + Tạo commit mô tả: git commit -m 'homework1'
-+ git push
++ push code: git push
 - Những lần sau:
 + Add toàn bộ file change: git add .
 + Tạo commit mô tả: git commit -m 'homework1'
-+ git push
++ push code: git push
 
 ## Run HTML file:
 - MAC: open index.html
