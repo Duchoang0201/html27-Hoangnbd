@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script src="./jquery/jquery.min.js"></script>
+    <header></header>
+    <p> get customer information</p>
+    <button onclick="getListUsers()">Nhấn vào</button>
+    <p> them</p>
+    <button onclick="postUser()">Nhấn vào</button>
+    <p> cap nhat</p>
+    <button onclick="updateUser()">Nhấn vào</button>
+    <p> xoa</p>
+    <button onclick="testJq()">Test JQ</button>
+    <!-- <button onclick="deleteUser()">Nhấn vào</button> -->
+ 
+    <p>khoang cach</p>
+    <div id="results"></div>
+    <script>
+       
+        window.onload = function (e) {
+            $.get("./header.html", function (data, status){
+                $("header").html(data);
+            });
+        }   
+        function testJq(){
+            console.log('run JQ');
+            let elm = $('test')
+            elm.html(elm)
+            $.get("./header")
+        };
+         </script>
+    
+    
+    <script>
+       
+        window.onload = function (e) {
+            $.get("./header.html", function (data, status){
+                $("header").html(data);
+            });
+        }   
+        function testJq(){
+            console.log('run JQ');
+            let elm = $('test')
+            elm.html(elm)
+            $.get("./header")
+        };
+         </script>
+    
+    
+    <script src="./js/List.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+   
+</body>
+</html>

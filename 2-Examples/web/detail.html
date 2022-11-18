@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>detail</h1>
+    <div id="infor"></div>
+    <script src=""></script>
+    <script>
+        let url = new URL(window.location.href);
+        let id = url.searchParams.get("id");
+        console.log(id);
+        getUsers(id);
+        function getUsers(userId) {
+            let userList = " https://636b8f56ad62451f9fb53c68.mockapi.io/Users/" + userId;
+            fetch( userList, {
+                method: "GET",
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    let res = `
+                        <p>${data.name}</p>
+                        <img src="${data.avatar}"/>`
+                        document.getElementById('infor').innerHTML = res
+                    // data?.map((user) => addRowJs(user));
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+</body>
+</html>

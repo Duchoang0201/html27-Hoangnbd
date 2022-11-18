@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body a {
+            padding: 10px 20px;
+        }
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a class="item__nav " href="./Home.html">Home</a>
+    <a class=" item__nav" href="./List.html">List</a>
+    <a class=" item__nav" href="./Form.html">Form</a>
+    <script>
+        const CURRENT_HREF = window.location.href
+        let  listA = $('a')
+        console.log(listA);
+        for (let index = 0; index < listA.length; index++) {
+            const element = listA[index];
+            if (element.href === CURRENT_HREF) {
+                $(element).addClass('active')
+                
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row ">
+                <div class="col ">
+                    <p class="border-bottom py-3 ">The Drive</p>
+                    <p class="border-bottom py-3  ">The Walk</p>
+                    <p class="border-bottom py-3 ">The Return</p>
+                    <p class="border-bottom py-3  ">The End</p>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">CONTENT</th>
+                                <th scope="col">NOTE</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    One of three columns
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <p> get customer information</p>
+            <button onclick="getListUsers()">Nhấn vào</button>
+            <div id="results"></div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <h1>Đăng ký tài khoản</h1>
+            <form onsubmit="return false">
+                <!-- input save data by value : email, text, password, select -->
+                <input onchange="console.log('change')" onblur="console.log('blur')" id="inputText" type="text" />
+                <input id="inputAvatar" type="text" />
+                <!-- input save data by checked : checkbox, radio button -->
+                <button onclick="handleClick()">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="./jquery/jquery.min.js"></script>
+    <script>
+        function getListUsers() {
+            let userList = " https://636b8f56ad62451f9fb53c68.mockapi.io/Users ";
+            fetch(userList, {
+                method: "GET",
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    _renderListUser(data);
+
+                    // data?.map((user) => addRowJs(user));
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+        function _renderListUser(listUser) {
+            let contentBody = ``;
+            listUser.map((user) => {
+                contentBody += `<tr class="">
+                  <td scope="row">${user.name}</td>
+                  <td>${user.avatar}</td>
+                  <td>
+                    <a href="./detail.html?id=${user.id}">Go to Detail</a>
+                    <button onclick="handeDetail(${user.id})">Detail</button>  
+                    <button onclick="handeDelete(${user.id})">Delte</button>  
+                  </td>
+                </tr>`
+            });
+            let res = `
+      <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Avatar</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          ${contentBody}
+        </tbody>
+      </table>
+    `;
+
+            let elm = document.getElementById("results");
+            elm.innerHTML = res;
+        }
+        function handeDelete(userId) {
+            console.log("handeDelete", userId);
+            fetch("https://636b8f56ad62451f9fb53c68.mockapi.io/Users/" + userId, {
+                method: "DELETE",
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    getListUsers(data);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+        function handeDetail(userId) {
+            console.log('Clicked detail', userId);
+            let newUrl = "./detail.html?id=" + userId;
+            window.location.href = newUrl
+        }
+        function handleClick() {
+            let userList = " https://636b8f56ad62451f9fb53c68.mockapi.io/Users ";
+            let userName = inputText.value;
+            let userAvatar = inputAvatar.value;
+            const data = {
+                name: userName,
+                avatar: userAvatar,
+            };
+            fetch(userList, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((res) => console.log(res))
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
