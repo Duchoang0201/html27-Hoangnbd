@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/home.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+
+    header {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        padding-left: 250px;
+        
+        -webkit-transition: all .25s;
+        -o-transition: all .25s;
+        transition: all .25s;
+    }
+    footer{
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        padding-left: 250px;
+        
+        -webkit-transition: all .25s;
+        -o-transition: all .25s;
+        transition: all .25s;
+    }
+
+    .slide-body {
+        background: #333333;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hoang {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 20vh;
+        width: 100%;
+        background-color: linear-gradient(rgba(150, 126, 126, 0.9), );
+    }
+
+    .hoang h2 {
+        position: relative;
+        font-size: 4vw;
+        color: #252839;
+        -webkit-text-stroke: 0.1vw #383d25;
+        text-transform: uppercase;
+    }
+
+    .hoang h2::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        color: #01fe87;
+        white-space: nowrap;
+        -webkit-text-stroke: 0.2vw #383d52;
+        border-right: 2px solid #01fe87;
+        overflow: hidden;
+        animation: animate 6s linear infinite;
+
+
+    }
+
+    .hoang {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 10vh;
+        width: 100%;
+        background-color: linear-gradient(rgba(150, 126, 126, 0.9), );
+    }
+
+    .hoang h2 {
+        position: relative;
+        font-size: 30px;
+        color: #252839;
+        -webkit-text-stroke: 0.1vw #383d25;
+        text-transform: uppercase;
+    }
+
+    .hoang h2::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        color: #01fe87;
+        white-space: nowrap;
+        -webkit-text-stroke: 0.1vw #383d52;
+        border-right: 2px solid #01fe87;
+        overflow: hidden;
+        animation: animate 6s linear infinite;
+
+
+    }
+
+    @keyframes animate {
+        0% {
+            width: 0;
+        }
+
+        70% {
+            width: 100%;
+        }
+
+
+    }
+
+    .slide__first {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./image/background.jpg);
+        background-size: cover;
+        background-position-x: 120px;
+        background-position-y: -100px;
+
+    }
+
+    .swiper {
+        width: 100%;
+        padding-bottom: 150px;
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <header></header>
+    <div class="sidebar">
+        <div class="sidebar__top">
+            <a class="sidebar__logo" href="index.html">
+                <img class="sidebar__pic " src="https://i.pinimg.com/564x/00/63/15/00631561f4895a630508c2b0d0bdb4d1.jpg"
+                    alt="" /></a>
+        </div>
+        <div class="sidebar__caption caption-sm">
+
+            <div class="hoang">
+                <h2 data-text="News Feed">News Feed</h2>
+            </div>
+        </div>
+        <div class="sidebar__wrapper">
+            <div class="menu">
+                <div class="sidebar__text">
+                    News Feed
+                </div>
+                <div class="sidebar__text">
+                    Trending
+                </div>
+                <div class="sidebar__text">
+                    Following
+                </div>
+                <div class="sidebar__text">
+                    Playlist
+                </div>
+
+            </div>
+        </div>
+        <div class="sidebar__bottom">
+            <div class="sidebar__banner">
+                <div class="sidebar__bg" style="background-image: url('https://i.pinimg.com/564x/a7/94/fb/a794fb479c65dcb2308751e54ba8e96c.jpg');"></div>
+                <div class="sidebar__details">
+                  <div class="sidebar__title h5">Join the&nbsp;Gaming</div>
+                  <div class="sidebar__info caption-sm">Where you can bet anything.</div>
+                  <button class="sidebar__btn btn btn_purple btn_wide">Join Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar__bottom">
+              
+                </div>
+          </div>
+        </div>
+    </div>
+    <section class="slide__first">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/564x/51/1a/00/511a0025239510486639bfc9c4c63dcd.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/62/c4/fa/62c4fa31f2a19a1f6a9bdcb9c507a6de.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/1b/4c/4e/1b4c4e8a160ca96545cdf24bccebb9bc.jpg" />
+                </div>
+                <div class="swiper-slide ">
+                    <img src="https://i.pinimg.com/736x/12/21/29/122129db6a9b8a8cdacb711768dcc9f5.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/564x/fc/05/91/fc059161e67d20c5ba33dd35cdf24487.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/53/98/c5/5398c53f007d344e45ca6602e038c3b6.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/564x/28/16/35/2816350c61ad61496af55dc17ef3fc0a.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/88/7e/cf/887ecfab19d2165f023b4faf8c60fa42.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.pinimg.com/736x/e6/83/2d/e6832d5d24b67a23b3a2855ab9e09657.jpg" />
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <section class="slide-body">
+
+
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img class="card-img"
+                                    src="https://i.pinimg.com/564x/5f/6d/e5/5f6de5b18f033fd2226ed07b9784b820.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">Ronaldo</h2>
+                            <p class="description">Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985), better
+                                known as Cristiano Ronaldo, is a Portuguese professional footballer who plays as a
+                                forward. </p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img class="card-img"
+                                    src="https://i.pinimg.com/736x/71/d1/42/71d142f748714fdc8fd562c7602302f1.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name"> Neymar</h2>
+                            <p class="description">Neymar da Silva Santos Júnior (born February 5, 1992 in Mogi das
+                                Cruzes , Brazil ), commonly known as Neymar or Neymar Jr. ,
+                                is a Brazilian footballer. </p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img class="card-img"
+                                    src="https://i.pinimg.com/736x/8a/de/3f/8ade3fcbe52e5a270a7969267db3576c.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">Ramos</h2>
+                            <p class="description">Sergio Ramos García (born 30 March 1986) is a Spanish professional
+                                footballer
+                                He plays as a central defender for Ligue 1 club Paris Saint -Germain and the Spain
+                                national football team . </p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img class="card-img"
+                                    src="https://i.pinimg.com/736x/01/4f/a5/014fa56b7ea8d4499210b657df55c162.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">Ronaldo</h2>
+                            <p class="description">Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985), better
+                                known as Cristiano Ronaldo, is a Portuguese professional footballer who plays as a
+                                forward. </p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img class="card-img"
+                                    src="https://i.pinimg.com/736x/ec/c0/93/ecc093922302b45f0595102abc88fdcd.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">Ronaldo</h2>
+                            <p class="description">Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985), better
+                                known as Cristiano Ronaldo, is a Portuguese professional footballer who plays as a
+                                forward. </p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img class="card-img"
+                                    src="https://i.pinimg.com/564x/24/02/6f/24026f372f5c9db15df4c8f209b00db9.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">Ronaldo</h2>
+                            <p class="description">Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985), better
+                                known as Cristiano Ronaldo, is a Portuguese professional footballer who plays as a
+                                forward. </p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </section>
+
+
+    <section>
+        <footer style="text-align: center; background-color: #333333; color: #FFF;">©2022 DH88 NHÀ CÁI ĐẾN TỪ CHÂU ÂU
+        </footer>
+    </section>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="./js/Home.js"></script>
+
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./jquery/jquery.validate.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            gragCursor: 'true',
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                920: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+    </script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 5,
+            initialSlide: 4,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 10,
+                depth: 100,
+                modifier: 5,
+                slideShadows: true,
+                
+
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+        });
+    </script>
+    <script>
+        window.onload = function (e) {
+  $.get("./Header.html", function (data, status) {
+    $("Header").html(data);
+  });
+  
+};
+    </script>
+</body>
+
+</html>

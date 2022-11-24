@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .card__body {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card__container {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid grey;
+            margin-left: 40px;
+            width: 466px;
+            margin-bottom: 30px;
+        }
+
+        .card__content p,
+        h5 {
+            padding-left: 20px;
+            margin-bottom: 3px;
+        }
+
+        .card__content h5 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+    <p> List of products</p>
+    <button onclick="getListproducts()">Nhấn vào</button>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card__body">
+        <div class="card__container">
+            <div class="card__image">
+                <img style="width: 200px; height: 200px;"
+                    src="https://i.pinimg.com/564x/8c/6f/99/8c6f992224fb697bce1373865fc5a02e.jpg" alt="">
+            </div>
+            <div class="card__content">
+                <h5 class="card-title">${user.productname}</h5>
+                <p class="card-title">${user.productadjective}</p>
+                <p class="card-title">${user.productmaterial}</p>
+                <p class="card-title">${user.product}</p>
+                <p class="card-title">${user.price}</p>
+            </div>
+        </div>
+        <div class="card__container">
+            <div class="card__image">
+                <img style="width: 200px; height: 200px;"
+                    src="https://i.pinimg.com/564x/8c/6f/99/8c6f992224fb697bce1373865fc5a02e.jpg" alt="">
+            </div>
+            <div class="card__content">
+                <h5 class="card-title">${user.productname}</h5>
+                <p class="card-title">${user.productadjective}</p>
+                <p class="card-title">${user.productmaterial}</p>
+                <p class="card-title">${user.product}</p>
+                <p class="card-title">${user.price}</p>
+            </div>
+        </div>
+        <div class="card__container">
+            <div class="card__image">
+                <img style="width: 200px; height: 200px;"
+                    src="https://i.pinimg.com/564x/8c/6f/99/8c6f992224fb697bce1373865fc5a02e.jpg" alt="">
+            </div>
+            <div class="card__content">
+                <h5 class="card-title">${user.productname}</h5>
+                <p class="card-title">${user.productadjective}</p>
+                <p class="card-title">${user.productmaterial}</p>
+                <p class="card-title">${user.product}</p>
+                <p class="card-title">${user.price}</p>
+            </div>
+        </div>
+    </div>
+    <div id="results"></div>
+
+    <script>
+        function getListproducts() {
+            let userList = " https://636b8f56ad62451f9fb53c68.mockapi.io/Users ";
+
+            fetch(userList, {
+                method: "GET",
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    _renderListproducts(data);
+
+                    // data?.map((user) => addRowJs(user));
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+        function _renderListproducts(listUser) {
+            let contentBody = ``;
+            listUser.map((user) => {
+                contentBody += `
+                    
+        <div class="card__container">
+            <div class="card__image">
+                <img style="width: 200px; height: 200px;" src="${user.image}" alt="">
+            </div>
+            <div class="card__content">
+                <h5 class="card-title">${user.productname}</h5>
+                <p class="card-title">${user.productadjective}</p>
+                <p class="card-title">${user.productmaterial}</p>
+                <p class="card-title">${user.product}</p>
+                <p class="card-title">${user.price}</p>
+            </div>
+        </div>
+       
+                `
+            });
+            let res = `
+                <div class="card__body">
+                    
+                ${contentBody}
+            
+            </div>  
+        
+    `;
+
+            let elm = document.getElementById("results");
+            elm.innerHTML = res;
+        }
+    </script>
+    <script>
+        function checkLogin() {
+            let url = new URL(window.location.href);
+            let isLogin = url.searchParams.get("islogin");
+            let isLogin2 = localStorage.getItem("islogin");
+            let btnLogin = document.getElementById('btn__login')
+            let btnLogout = document.getElementById('btn__logout')
+            if (isLogin == 1) {
+                btnLogin.classList.add("d-none");
+                btnLogin.classList.remove("d-block");
+                btnLogout.classList.add("d-block");
+                btnLogout.classList.remove("d-none");
+            } else {
+                btnLogout.classList.add("d-none");
+                btnLogout.classList.remove("d-block");
+                btnLogin.classList.add("d-block");
+                btnLogin.classList.remove("d-none");
+            }
+            console.log(isLogin);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
